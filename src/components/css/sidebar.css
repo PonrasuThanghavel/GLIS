@@ -1,0 +1,24 @@
+/* Sidebar.css */
+
+.sidebar {
+    width: 240px; /* Width of the sidebar */
+    height: 100%; /* Height of the sidebar */
+    background-color: #333; /* Background color of the sidebar */
+    color: white; /* Text color */
+  }
+  
+  .sidebar-list {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+  }
+  
+  .sidebar-list-item {
+    padding: 16px 20px; /* Padding for each list item */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for background color change */
+  }
+  
+  .sidebar-list-item:hover {
+    background-color: #555; /* Darker background color on hover */
+  }
+  
