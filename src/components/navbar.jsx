@@ -1,23 +1,24 @@
-// Navbar.js
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faChartLine } from '@fortawesome/free-solid-svg-icons'; // Import the necessary solid icons
-import './css/navbar.css'; // Import Navbar CSS
+import { faChartLine } from '@fortawesome/free-solid-svg-icons';
+import './css/navbar.css'; 
 
 const Navbar = () => {
   return (
     <div className="navbar">
-      <div className="navbar-title">GLIS</div>
+      {/* <div className="navbar-title">GLIS</div> */}
       <div className="navbar-links">
-        <a href="#" className="navbar-link">Home</a>
-        <a href="#" className="navbar-link">
-          <FontAwesomeIcon icon={faChartLine} /> Dashboard
+        {/* <a href="/home" className="navbar-link">Home</a> */}
+        {/* <a href="/data" className="navbar-link" >
+          <FontAwesomeIcon icon={faChartLine}  /> Data 
         </a>
-        <a href="#" className="navbar-link">
+        <a href="/user" className="navbar-link">
           <FontAwesomeIcon icon={faUser} /> User
-        </a>
+        </a> */}
+        <Link to="/" className="navbar-title">GLIS</Link>
+        <Link to="/data" className="navbar-link"><FontAwesomeIcon icon={faChartLine}/>Data</Link>
       </div>
-      {/* <button className="navbar-button">Account</button> */}
     </div>
   );
 };

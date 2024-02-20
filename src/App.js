@@ -1,19 +1,24 @@
-// App.js
 import React from 'react';
-// import { Grid } from '@mui/material';
-import Sidebar from './components/sidebar';
+// import { Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/navbar';
-import Dashboard from './components/dashboard';
+import Dashboard from './components/Dasboard/dashboard.jsx';
+import TableView from './components/tableview.jsx';
+import Recordview from './components/recordview.jsx';
 
 function App() {
   return (
+    <Router>
     <div>
           <Navbar/>
-          {/* <Sidebar/> */}
-          <Dashboard />
+            <Routes>
+              <Route exact path='/' element={<Dashboard/>}/>
+              <Route path='/data' element={<TableView/>}/>
+              <Route path='/RecordView/:id' element={<Recordview/>}/>
+            </Routes>
+          {/* <Recordview/> */}
     </div>
-      
-   
+    </Router>
   );
 }
 
