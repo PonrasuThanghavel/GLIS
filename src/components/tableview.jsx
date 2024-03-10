@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'; // Import Link
-// import Recordview from './recordview.jsx';
+import { Link } from 'react-router-dom'; // Import Lin
+
+import './css/tableview.css'
 
 const TableView = () => {
   const [busStations, setBusStations] = useState([]);
@@ -14,7 +15,7 @@ const TableView = () => {
 
   const fetchBusStations = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/api/bus-stations');
+      const response = await axios.get('https://glis-backend.onrender.com/api/bus-stations');
       setBusStations(response.data);
     } catch (error) {
       console.error('Error fetching bus stations:', error);
@@ -81,10 +82,10 @@ const TableView = () => {
             <tr key={station.ID}>
               <td>{station.ID}</td>
               <td>{station.Name}</td>
-              <td>{station.LocBody}</td>
+              <td>{station.Local }</td>
               <td>{station.Reg}</td>
               <td>{station.Rev}</td>
-              <td>{station.Com}</td>
+              <td>{station.Zone_type}</td>
               <td>{station.Year}</td>
               {/* <Recordview id={station.ID} /> */}
               <td>

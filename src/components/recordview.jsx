@@ -14,7 +14,7 @@ const Recordview = () => { // Accept id as a parameter
     }, [id]);
     const fetchRecord = async (id) => { // Receive id as a parameter
         try {
-            const response = await axios.get(`http://localhost:4000/api/bus-stations/${id}`); // Use id in the URL
+            const response = await axios.get(`https://glis-backend.onrender.com/api/bus-stations/${id}`); // Use id in the URL
             console.log(response.data);
             setRecord(response.data); 
         } catch (error) {
@@ -40,8 +40,8 @@ const Recordview = () => { // Accept id as a parameter
                                         <td>{record.Name}</td>
                                     </tr>
                                     <tr>
-                                        <td>Location Body:</td>
-                                        <td>{record.LocBody}</td>
+                                        <td>Local Body:</td>
+                                        <td>{record.Local}</td>
                                     </tr>
                                     <tr>
                                         <td>Region:</td>
@@ -53,7 +53,7 @@ const Recordview = () => { // Accept id as a parameter
                                     </tr>
                                     <tr>
                                         <td>Commercial Zone:</td>
-                                        <td>{record.Com}</td>
+                                        <td>{record.Zone_type}</td>
                                     </tr>
                                     <tr>
                                         <td>Year:</td>

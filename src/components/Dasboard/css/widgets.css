@@ -1,3 +1,4 @@
+/* Global styles */
 .user-count-info {
   margin: 16px;
 }
@@ -5,38 +6,24 @@
 .grid-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Two columns */
-  grid-template-rows: repeat(2, 150px); /* Two rows */
+  grid-template-rows: repeat(2, auto); /* Two rows with auto height */
   grid-gap: 16px; /* Gap between grid items */
 }
 
 .grid-item {
-  /* border: 1px solid #000; */
   border-radius: 8px; /* Rounded corners */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
   padding: 16px; /* Padding */
   text-align: center; /* Center align text */
   overflow: hidden; /* Hide overflow */
+  background-color: #f2f2f2; /* Soft gray background */
+  color: #333; /* Dark text color */
 }
 
-/* Unique styling for each cell */
-.user-login {
-  background-color: #FFC107; /* Amber */
-  color: #000; /* Contrast color */
-}
-
-.land-data {
-  background-color: #03A9F4; /* Light Blue */
-  color: #000; /* Contrast color */
-}
-
-.zones-count {
-  background-color: #4CAF50; /* Green */
-  color: #000; /* Contrast color */
-}
-
-.area-size {
-  background-color: #E91E63; /* Pink */
-  color: #000; /* Contrast color */
+.login,
+.login-count {
+  grid-column: span 1; /* Each box spans 1 column */
+  grid-row: span 1; /* Each box spans 1 row */
 }
 
 .stylish-split {
@@ -52,14 +39,8 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center; /* Center align text */
-}
-
-.stylish-left-section {
-  background-color: #FFC107; /* Amber */
-}
-
-.stylish-right-section {
-  background-color: #4CAF50; /* Green */
+  background-color: #f2f2f2; /* Soft gray background */
+  color: #333; /* Dark text color */
 }
 
 .stylish-left-section h3,
@@ -67,12 +48,12 @@
   margin-top: 0;
   margin-bottom: 8px;
   font-size: 1.2rem;
-  color: #fff; /* White text color */
+  color: #444; /* Slightly darker text color */
 }
 
 .stylish-left-section p,
 .stylish-right-section p {
   margin: 0;
   font-size: 1rem;
-  color: #fff; /* White text color */
+  color: #555; /* Slightly darker text color */
 }

@@ -16,7 +16,7 @@ const LargeSpace = () => {
   useEffect(() => {
     const fetchTopRevenue = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/top-revenue');
+        const response = await axios.get('https://glis-backend.onrender.com/api/top-revenue');
         setTopRevenueData(response.data);
       } catch (error) {
         console.error('Error fetching top revenue:', error);
@@ -30,7 +30,7 @@ const LargeSpace = () => {
   useEffect(() => {
     const fetchFloodRisk = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/flood-risk');
+        const response = await axios.get('https://glis-backend.onrender.com/api/flood-risk');
         setFloodRiskScores(response.data);
       } catch (error) {
         console.error('Error fetching flood risk scores:', error);
@@ -44,7 +44,7 @@ const LargeSpace = () => {
   useEffect(() => {
     const fetchEnvironmentalSafety = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/envi-safety');
+        const response = await axios.get('https://glis-backend.onrender.com/api/envi-safety');
         setEnvironmentalSafetyData(response.data);
       } catch (error) {
         console.error('Error fetching environmental safety data:', error);
@@ -80,7 +80,7 @@ const LargeSpace = () => {
                   <th>Name</th>
                   <th>Revenue</th>
                   <th>Commercial</th>
-                  <th>No. of Platforms</th>
+                  <th>Area</th>
                   <th>Accessibility score</th>
                 </tr>
                 {/* Name Rev Com Plat Acc_Score */}
@@ -88,8 +88,8 @@ const LargeSpace = () => {
                   <tr key={index}>
                     <td>{area.Name}</td>
                     <td>{area.Rev}</td>
-                    <td>{area.Com}</td>
-                    <td>{area.Plat}</td>
+                    <td>{area.Zone_type}</td>
+                    <td>{area.Size}</td>
                     <td>{area.Acc_Score}</td>
                   </tr>
                 ))}

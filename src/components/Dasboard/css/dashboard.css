@@ -2,14 +2,14 @@
 .graph-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr); 
-  grid-gap: 16px; 
+  grid-gap: 5px; 
 }
 
 .graph-card {
   border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 16px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius:0 0 0 0 px;
+  padding: 6px;
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
 }
 
 .graph-card h2 {

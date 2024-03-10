@@ -11,7 +11,7 @@ const Maplinking = () => {
   useEffect(() => {
     const fetchGeocode = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/geocode');
+        const response = await axios.get('https://glis-backend.onrender.com/api/geocode');
         setGeocode(response.data);
       } catch (error) {
         console.error('Error fetching geocode:', error);
