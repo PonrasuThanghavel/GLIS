@@ -8,6 +8,7 @@ import Recordview from './components/recordview.jsx';
 import LoginPage from './components/login.jsx';
 import SignUp from './components/signup.jsx';
 import User from './components/user.jsx';
+import Map from './components/Dasboard/maplinking.jsx';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -23,12 +24,14 @@ function App() {
           <Route path='/login' element={isLoggedIn?<Dashboard/>:<LoginPage isAuthenticated={isLoggedIn} setIsAuthenticated={setIsLoggedIn} />} />
           <Route exact path='/' element={isLoggedIn ? <Dashboard /> : <Navigate to="/login" />} />
           <Route path='/data' element={isLoggedIn ? <TableView /> : <Navigate to="/login" />} />
+          <Route path='/Map' element={isLoggedIn ? <Map /> : <Navigate to="/login" />} />
           <Route path='/RecordView/:id' element={isLoggedIn ? <Recordview /> : <Navigate to="/login" />} />
           <Route path='/user' element={isLoggedIn ? <User /> : <Navigate to="/login" />} />
           <Route path='/signup'element={<SignUp/>}/>
         </Routes>
       </div>
     </Router>
+    // <Dashboard/>
     
 
   );

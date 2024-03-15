@@ -65,3 +65,36 @@ td > a {
 td > a:hover {
   text-decoration: underline;
 }
+
+
+/* tableview.css */
+
+/* Search container */
+.search-container {
+  margin-bottom: 20px; /* Adjust margin as needed */
+}
+
+/* Search input */
+.search-input {
+  width: 250px; /* Adjust width as needed */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-right: 10px; /* Add margin between input and select */
+}
+
+/* Select dropdown */
+.sort-select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #fff; /* Set background color */
+}
+
+/* Apply flex layout for search container */
+.search-container {
+  display: flex;
+  align-items: center;
+}

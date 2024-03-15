@@ -8,7 +8,11 @@
   overflow: hidden;
   position: relative;
 }
-
+.loading-animation {
+  width: 20vw; /* Adjust width as needed */
+  height: 20vh; /* Adjust height as needed */
+  margin: auto; /* Center the animation horizontally */
+}
 .large-space .slick-slider {
   margin: 0 -16px;
   height: 100%;

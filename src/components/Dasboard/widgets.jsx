@@ -1,101 +1,75 @@
-import React, { useEffect, useRef } from 'react';
-import Chart from 'chart.js/auto';
-import './css/widgets.css'; // Import UserCountInfo CSS
+import React, { useEffect, useState } from 'react';
+import Chart from 'react-apexcharts';
+import axios from 'axios';
+import Lottie from 'lottie-react';
+import loadingAnimation from '../loading.json';
 
-const Widgets = () => {
-  const zonesCountChartRef = useRef(null);
-  const areaSizeChartRef = useRef(null);
+const ScatterPlot = ({ title }) => {
+  const [scatterData, setScatterData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const options = {
+    chart: {
+      toolbar: {
+        show: false
+      }
+    },
+    xaxis: {
+      title: {
+        text: 'Standardized Foot Traffic'
+      },
+      labels: {
+        formatter: function (val) {
+          return val.toFixed(2); // Format x-axis labels to two decimal places
+        }
+      }
+    },
+    yaxis: {
+      title: {
+        text: 'Population Density'
+      }
+    },
+    markers: {
+      size: 6
+    }
+  };
 
   useEffect(() => {
-    const data = {
-      zonesCount: {
-        commercial: 200,
-        industrial: 150,
-        residential: 100,
-      },
-      areaSize: {
-        totalSize: [1000, 1500, 2000, 2500, 3000],
-      },
-    };
-
-    const chartOptions = {
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          display: false,
-        },
-      },
-    };
-
-    const zonesCountChart = new Chart(zonesCountChartRef.current, {
-      type: 'pie',
-      data: {
-        labels: ['Commercial', 'Industrial', 'Residential'],
-        datasets: [{
-          label: 'Zones Count',
-          data: [data.zonesCount.commercial, data.zonesCount.industrial, data.zonesCount.residential],
-          backgroundColor: ['#03A9F4', '#FFC107', '#4CAF50'],
-        }]
-      },
-      options: chartOptions
-    });
-
-    const areaSizeChart = new Chart(areaSizeChartRef.current, {
-      type: 'line',
-      data: {
-        labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
-        datasets: [{
-          label: 'Total Cumulative Area',
-          data: data.areaSize.totalSize,
-          borderColor: '#03A9F4',
-          fill: false,
-        }]
-      },
-      options: chartOptions
-    });
-
-    return () => {
-      zonesCountChart.destroy();
-      areaSizeChart.destroy();
-    };
+    axios.get('https://glis-backend.onrender.com/api/bus-stations')
+      .then(response => {
+        const data = response.data;
+        const maxFootTraffic = Math.max(...data.map(item => item.FootTraffic));
+        const standardizedData = data.map(item => ({
+          x: item.FootTraffic / maxFootTraffic, // Standardize x-axis values
+          y: item.PopulationDensity,
+          z: item.Rev // Assuming "Rev" is the bubble size
+        }));
+        setScatterData(standardizedData);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+        setError('Error fetching data. Please try again later.');
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   return (
-    <div className="user-count-info">
-      <div className="grid-container">
-        <div className="grid-item user-login">
-          <div className="split stylish-split">
-            <div className="left-section stylish-left-section">
-              <h3>User Count</h3>
-              <p>User Count: 150</p>
-            </div>
-            <div className="right-section stylish-right-section">
-              <h3>Login Count</h3>
-              <p>Login Count: 100</p>
-            </div>
-          </div>
+    <div className="chart-container">
+      <h2>{title}</h2>
+      {loading ? (
+        <div className="loading-animation">
+          <Lottie animationData={loadingAnimation} loop autoplay />
         </div>
-        <div className="grid-item land-data">
-          <div className="split stylish-split">
-            <div className="left-section stylish-left-section">
-              <h3>Total Records</h3>
-              <p>Total Records: 500</p>
-            </div>
-            <div className="right-section stylish-right-section">
-              <h3>Login Count</h3>
-              <p>Login Count: 100</p>
-            </div>
-          </div>
-        </div>
-        <div className="grid-item zones-count">
-          <canvas ref={zonesCountChartRef} width="200" height="160"></canvas>
-        </div>
-        <div className="grid-item area-size">
-          <canvas ref={areaSizeChartRef} width="200" height="160"></canvas>
-        </div>
-      </div>
+      ) : error ? (
+        <div className="error-message">{error}</div>
+      ) : (
+        <Chart options={options} series={[{ data: scatterData }]} type="scatter" height={400} />
+      )}
     </div>
   );
 };
 
-export default Widgets;
+export default ScatterPlot;
