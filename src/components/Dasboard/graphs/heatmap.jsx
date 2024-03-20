@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Chart from 'react-apexcharts';
 import axios from 'axios';
 import Lottie from 'lottie-react';
-import loadingAnimation from '../../loading.json'; // Import your loading animation JSON file
+import loadingAnimation from '../../../assets/animations/loading.json'; // Import your loading animation JSON file
 
 const HeatmapChart = () => {
   const [heatmapData, setHeatmapData] = useState([]);

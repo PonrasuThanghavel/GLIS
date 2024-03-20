@@ -54,7 +54,7 @@ const LargeSpace = () => {
       {loading ? (
         <div className="loading-animation" ref={loadingRef}>
           {/* Lottie animation */}
-          <Lottie animationData={require('../loading.json')} loop autoplay />
+          <Lottie animationData={require('../../assets/animations/loading.json')} loop autoplay />
         </div>
       ) : (
         <>

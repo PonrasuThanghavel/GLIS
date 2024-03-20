@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts';
 import axios from 'axios';
 import Lottie from 'lottie-react';
-import loadingAnimation from '../../loading.json';
+import loadingAnimation from '../../../assets/animations/loading.json';
 
 const BarChart = () => {
   const [barData, setBarData] = useState([]);
@@ -40,9 +40,13 @@ const BarChart = () => {
       }
     },
     title: {
-      text: 'Bus Stations Flood Risk Scores',
+      text: 'Flood Risk Scores',
       align: 'center'
     },
+    tooltip:
+    {
+      enabled: false,
+    }
   };
 
   return (

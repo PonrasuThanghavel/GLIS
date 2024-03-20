@@ -54,7 +54,7 @@ const TreemapChart = () => {
     <div className="chart-container">
       {loading ? (
         <div className="loading-animation">
-          <Lottie animationData={require('../../loading.json')} loop autoplay />
+          <Lottie animationData={require('../../../assets/animations/loading.json')} loop autoplay />
         </div>
       ) : error ? (
         <div className="error-message">{error}</div>
